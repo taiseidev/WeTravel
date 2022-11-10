@@ -11,14 +11,28 @@ class App extends StatelessWidget {
   }
 }
 
-class WeTravel extends StatelessWidget {
+class WeTravel extends StatefulWidget {
   const WeTravel({super.key});
 
   @override
+  State<WeTravel> createState() => _WeTravelState();
+}
+
+class _WeTravelState extends State<WeTravel> {
+  int counter = 0;
+
+  void incrementCounter() {
+    setState(() {
+      counter++;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: incrementCounter),
       body: Center(
-        child: Text('WeTravel'),
+        child: Text(counter.toString()),
       ),
     );
   }
