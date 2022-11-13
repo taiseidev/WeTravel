@@ -11,6 +11,17 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  go_router: ^4.5.1
+  hooks_riverpod: ^2.1.1
+  salomon_bottom_bar: ^3.3.1
+
+# UI
+
+# Navigator
+go_router: ^5.1.5
+
+# State
+hooks_riverpod: ^2.1.1
 
 dev_dependencies:
   flutter_test:
