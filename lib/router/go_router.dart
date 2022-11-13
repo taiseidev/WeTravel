@@ -8,10 +8,19 @@ import '../presentation/home/home.dart';
 
 final routerProvider = Provider<GoRouter>(
   (ref) => GoRouter(
-    initialLocation: '/home',
+    initialLocation: '/top',
     navigatorKey: ref.watch(rootNavigatorProvider),
     debugLogDiagnostics: true,
     routes: [
+      // トップページ
+      GoRoute(
+        path: '/top',
+        pageBuilder: (context, state) => NoTransitionPage<void>(
+          key: state.pageKey,
+          child: TopPage(),
+        ),
+      ),
+      // ホームページ
       ShellRoute(
         navigatorKey: ref.watch(shellNavigatorProvider),
         builder: (context, state, child) {
