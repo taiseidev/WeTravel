@@ -7,45 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:971013731112:android:b5341d72dba3268e74561d",
+        "mobilesdk_app_id": "1:971013731112:android:2621fbc9536e016674561d",
         "android_client_info": {
-          "package_name": "co.jp.WeTravel.we_travel"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "971013731112-gpnp536p27agib5dqp203sth0gkt7hae.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBKPrTRGSx3-3m_B2cqFiuGvqJ68tbMPGU"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "971013731112-gpnp536p27agib5dqp203sth0gkt7hae.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "971013731112-jb9k139oh5c1vqe5o0uekq58fv8plvct.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "co.jp.wetravel"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:971013731112:android:6a19641f8023406b74561d",
-        "android_client_info": {
-          "package_name": "co.jp.wetravel"
+          "package_name": "co.jp.wetravel.project"
         }
       },
       "oauth_client": [

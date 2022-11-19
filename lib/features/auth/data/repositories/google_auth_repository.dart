@@ -1,9 +1,8 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:riverpod/src/framework.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:we_travel/features/auth/data/repositories/sign_in_repository.dart';
 
@@ -19,12 +18,11 @@ GoogleAuthRepository googleAuthRepository(GoogleAuthRepositoryRef ref) =>
 class GoogleAuthRepository implements IAuthRepository {
   GoogleAuthRepository(this.ref);
   final Ref ref;
+
   @override
   Future<void> signIn() async {
-    final platform = DefaultFirebaseOptions.currentPlatform;
-    log('プロジェクト名: ${platform.projectId}');
     final signinAccount = await GoogleSignIn(
-      clientId: platform.iosClientId,
+      clientId: DefaultFirebaseOptions.currentPlatform.iosClientId,
     ).signIn();
 
     if (signinAccount == null) {

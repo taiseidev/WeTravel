@@ -19,6 +19,8 @@ dependencies:
   firebase_auth: ^4.1.2
   firebase_messaging: ^14.1.0
   lottie: ^1.4.2
+  google_sign_in: ^5.4.2
+  sign_in_with_apple: ^4.2.0
 
 # UI
   gap: ^2.0.0

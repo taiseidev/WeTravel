@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>430509841889-4vt03n52l9hf1nl14c9k472p8vdelq4q.apps.googleusercontent.com</string>
+	<string>430509841889-rhusdmtol7kbkdsnh8kkc77r7g1ckcgp.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.430509841889-4vt03n52l9hf1nl14c9k472p8vdelq4q</string>
+	<string>com.googleusercontent.apps.430509841889-rhusdmtol7kbkdsnh8kkc77r7g1ckcgp</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>430509841889-475beqnnpd7897nqg7lk666fiuuqpiac.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAEjq0xUwH3823qQVAFP9aeKFN2uNzDE7A</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>co.jp.WeTravel</string>
+	<string>co.jp.wetravel.project.dev</string>
 	<key>PROJECT_ID</key>
 	<string>we-travel-project-dev</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:430509841889:ios:3b655f039f545221aa86a0</string>
+	<string>1:430509841889:ios:a8c3183c94fddfa4aa86a0</string>
 </dict>
 </plist>

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'google_auth_repository.dart';
+part of 'fake_auth_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,15 +29,14 @@ class _SystemHash {
   }
 }
 
-String $googleAuthRepositoryHash() =>
-    r'03a67775e5b79508c34f989503baf432b00ed496';
+String $fakeAuthRepositoryHash() => r'67c3ddb0a6499244a495e32dcc3d3c63b48bf8a6';
 
-/// See also [googleAuthRepository].
-final googleAuthRepositoryProvider = AutoDisposeProvider<GoogleAuthRepository>(
-  googleAuthRepository,
-  name: r'googleAuthRepositoryProvider',
+/// See also [fakeAuthRepository].
+final fakeAuthRepositoryProvider = AutoDisposeProvider<FakeAuthRepository>(
+  fakeAuthRepository,
+  name: r'fakeAuthRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : $googleAuthRepositoryHash,
+      : $fakeAuthRepositoryHash,
 );
-typedef GoogleAuthRepositoryRef = AutoDisposeProviderRef<GoogleAuthRepository>;
+typedef FakeAuthRepositoryRef = AutoDisposeProviderRef<FakeAuthRepository>;
