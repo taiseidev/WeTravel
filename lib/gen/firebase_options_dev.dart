@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -46,18 +49,9 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAmMNlRCKmT9MOPzAdR1Ev456gkjF7Hnd0',
-    appId: '1:430509841889:web:4b4a1ef3861c203faa86a0',
-    messagingSenderId: '430509841889',
-    projectId: 'we-travel-project-dev',
-    authDomain: 'we-travel-project-dev.firebaseapp.com',
-    storageBucket: 'we-travel-project-dev.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDAfzKsgUqAdyiQ4hOiE9xFxtCy4bUuq7E',
-    appId: '1:430509841889:android:51cdbf8f8f6f42c3aa86a0',
+    appId: '1:430509841889:android:5c5a9d9be4027b3baa86a0',
     messagingSenderId: '430509841889',
     projectId: 'we-travel-project-dev',
     storageBucket: 'we-travel-project-dev.appspot.com',
@@ -65,11 +59,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAEjq0xUwH3823qQVAFP9aeKFN2uNzDE7A',
-    appId: '1:430509841889:ios:3b655f039f545221aa86a0',
+    appId: '1:430509841889:ios:a8c3183c94fddfa4aa86a0',
     messagingSenderId: '430509841889',
     projectId: 'we-travel-project-dev',
     storageBucket: 'we-travel-project-dev.appspot.com',
-    iosClientId: '430509841889-4vt03n52l9hf1nl14c9k472p8vdelq4q.apps.googleusercontent.com',
-    iosBundleId: 'co.jp.WeTravel',
+    androidClientId: '430509841889-475beqnnpd7897nqg7lk666fiuuqpiac.apps.googleusercontent.com',
+    iosClientId: '430509841889-rhusdmtol7kbkdsnh8kkc77r7g1ckcgp.apps.googleusercontent.com',
+    iosBundleId: 'co.jp.wetravel.project.dev',
   );
 }

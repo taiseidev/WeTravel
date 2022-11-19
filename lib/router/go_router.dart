@@ -4,20 +4,21 @@ import 'package:we_travel/router/navigator_key.dart';
 import 'package:we_travel/router/scaffold_with_bottom_nav_bar.dart';
 import 'package:we_travel/router/tabs.dart';
 
+import '../features/auth/presentation/pages/sign_in_page.dart';
 import '../presentation/home/home.dart';
 
 final routerProvider = Provider<GoRouter>(
   (ref) => GoRouter(
-    initialLocation: '/top',
+    initialLocation: '/signIn',
     navigatorKey: ref.watch(rootNavigatorProvider),
     debugLogDiagnostics: true,
     routes: [
       // トップページ
       GoRoute(
-        path: '/top',
+        path: '/signIn',
         pageBuilder: (context, state) => NoTransitionPage<void>(
           key: state.pageKey,
-          child: TopPage(),
+          child: const SignInPage(),
         ),
       ),
       // ホームページ
@@ -30,7 +31,6 @@ final routerProvider = Provider<GoRouter>(
           );
         },
         routes: [
-          // Shopping Cart
           GoRoute(
             path: '/home',
             pageBuilder: (context, state) => NoTransitionPage<void>(

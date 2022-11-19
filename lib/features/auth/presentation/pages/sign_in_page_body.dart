@@ -49,21 +49,23 @@ class SignInPageBody extends ConsumerWidget {
                     .read(authControllerProvider.notifier)
                     .signInWithGoogle(),
                 text: 'Googleアカウントで登録',
-                icon: Icons.mail,
+                icon: Icons.g_mobiledata,
               ),
-              // SignInButton(
-              //   callback: () => ref
-              //       .read(authControllerProvider.notifier)
-              //       .signInPhoneNumber('09092096513', context),
-              //   text: '電話番号で登録',
-              //   icon: Icons.phone,
-              // ),
+              const Gap(10),
+              SignInButton(
+                callback: () =>
+                    ref.read(authControllerProvider.notifier).signInWithApple(),
+                text: 'Appleアカウントで登録',
+                icon: Icons.apple,
+              ),
             ],
           ),
         ),
       ),
       error: (error, stackTrace) {
-        return Center(child: Text(error.toString()));
+        return Center(
+          child: Text(error.toString()),
+        );
       },
       loading: () => const Center(
         child: CommonDialog(),

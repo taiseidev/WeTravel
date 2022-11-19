@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_controller.dart';
+part of 'fake_auth_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,20 +29,14 @@ class _SystemHash {
   }
 }
 
-String $AuthControllerHash() => r'3a62fc14fde0229fcc988516c5462d46d50d46e9';
+String $fakeAuthRepositoryHash() => r'67c3ddb0a6499244a495e32dcc3d3c63b48bf8a6';
 
-/// See also [AuthController].
-final authControllerProvider =
-    AutoDisposeAsyncNotifierProvider<AuthController, void>(
-  AuthController.new,
-  name: r'authControllerProvider',
+/// See also [fakeAuthRepository].
+final fakeAuthRepositoryProvider = AutoDisposeProvider<FakeAuthRepository>(
+  fakeAuthRepository,
+  name: r'fakeAuthRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : $AuthControllerHash,
+      : $fakeAuthRepositoryHash,
 );
-typedef AuthControllerRef = AutoDisposeAsyncNotifierProviderRef<void>;
-
-abstract class _$AuthController extends AutoDisposeAsyncNotifier<void> {
-  @override
-  FutureOr<void> build();
-}
+typedef FakeAuthRepositoryRef = AutoDisposeProviderRef<FakeAuthRepository>;

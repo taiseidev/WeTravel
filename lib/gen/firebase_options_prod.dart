@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -46,18 +49,9 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBS2EDd8APUiUuY8I5E2zWqI0Ur6wh4X2A',
-    appId: '1:971013731112:web:3d1dca68686168ea74561d',
-    messagingSenderId: '971013731112',
-    projectId: 'we-travel-project',
-    authDomain: 'we-travel-project.firebaseapp.com',
-    storageBucket: 'we-travel-project.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBKPrTRGSx3-3m_B2cqFiuGvqJ68tbMPGU',
-    appId: '1:971013731112:android:b5341d72dba3268e74561d',
+    appId: '1:971013731112:android:2621fbc9536e016674561d',
     messagingSenderId: '971013731112',
     projectId: 'we-travel-project',
     storageBucket: 'we-travel-project.appspot.com',
@@ -65,11 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyC97vURXyD78T-ZPq1uO8VqgaJnCqIkofQ',
-    appId: '1:971013731112:ios:9dec9c845e790cda74561d',
+    appId: '1:971013731112:ios:8e7263001c309d6b74561d',
     messagingSenderId: '971013731112',
     projectId: 'we-travel-project',
     storageBucket: 'we-travel-project.appspot.com',
-    iosClientId: '971013731112-jq549vpm99l5b3au2bplrhk38mcion50.apps.googleusercontent.com',
-    iosBundleId: 'co.jp.WeTravel',
+    iosClientId: '971013731112-1cbh9rhpdnpdp2cqo2h2emrdpq3adpg8.apps.googleusercontent.com',
+    iosBundleId: 'co.jp.wetravel.project',
   );
 }
