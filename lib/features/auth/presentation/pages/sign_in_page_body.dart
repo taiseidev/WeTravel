@@ -73,7 +73,7 @@ class SignInPageBody extends ConsumerWidget {
                       bottom: MediaQuery.of(context).viewInsets.bottom,
                     ),
                     child: SizedBox(
-                      height: 300,
+                      height: 250,
                       child: Column(
                         children: [
                           Row(
@@ -110,6 +110,7 @@ class SignInPageBody extends ConsumerWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 32),
                             child: TextFormField(
+                              autofocus: true,
                               keyboardType: TextInputType.phone,
                               maxLength: 11,
                               decoration: InputDecoration(
@@ -125,7 +126,7 @@ class SignInPageBody extends ConsumerWidget {
                   ),
                 ),
                 text: '電話番号で登録',
-                icon: Icons.apple,
+                icon: Icons.phone,
               ),
             ],
           ),
