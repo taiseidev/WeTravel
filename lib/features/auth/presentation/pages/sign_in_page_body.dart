@@ -58,6 +58,12 @@ class SignInPageBody extends ConsumerWidget {
                 text: 'Appleアカウントで登録',
                 icon: Icons.apple,
               ),
+              SignInButton(
+                callback: () =>
+                    ref.read(authControllerProvider.notifier).signInWithApple(),
+                text: '電話番号で登録で登録',
+                icon: Icons.apple,
+              ),
             ],
           ),
         ),

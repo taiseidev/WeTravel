@@ -24,6 +24,7 @@ dependencies:
 
 # UI
   gap: ^2.0.0
+  modal_bottom_sheet: ^2.1.2
 
 # Navigator
   go_router: ^5.1.5
