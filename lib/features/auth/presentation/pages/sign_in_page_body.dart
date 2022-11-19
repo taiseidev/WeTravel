@@ -58,10 +58,73 @@ class SignInPageBody extends ConsumerWidget {
                 text: 'Appleアカウントで登録',
                 icon: Icons.apple,
               ),
+              const Gap(10),
               SignInButton(
-                callback: () =>
-                    ref.read(authControllerProvider.notifier).signInWithApple(),
-                text: '電話番号で登録で登録',
+                callback: () => showModalBottomSheet<void>(
+                  context: context,
+                  isScrollControlled: true,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(15),
+                    ),
+                  ),
+                  builder: (context) => Padding(
+                    padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom,
+                    ),
+                    child: SizedBox(
+                      height: 300,
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () => Navigator.pop(context),
+                                icon: const Icon(
+                                  Icons.clear,
+                                  size: 30,
+                                ),
+                              ),
+                              const Spacer(),
+                              TextButton(
+                                onPressed: () {},
+                                child: const Text(
+                                  '認証',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Gap(20),
+                          const Text(
+                            '電話番号を入力してください。',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const Gap(30),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 32),
+                            child: TextFormField(
+                              keyboardType: TextInputType.phone,
+                              maxLength: 11,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                text: '電話番号で登録',
                 icon: Icons.apple,
               ),
             ],
