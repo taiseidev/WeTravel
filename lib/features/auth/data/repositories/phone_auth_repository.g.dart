@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_controller.dart';
+part of 'phone_auth_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,20 +29,15 @@ class _SystemHash {
   }
 }
 
-String $AuthControllerHash() => r'cfbf6e34278cea6705d7e4b3daecc4d833962e8a';
+String $phoneAuthRepositoryHash() =>
+    r'cc6448a38630b8d0545e2937abe5087edad7f555';
 
-/// See also [AuthController].
-final authControllerProvider =
-    AutoDisposeAsyncNotifierProvider<AuthController, void>(
-  AuthController.new,
-  name: r'authControllerProvider',
+/// See also [phoneAuthRepository].
+final phoneAuthRepositoryProvider = AutoDisposeProvider<PhoneAuthRepository>(
+  phoneAuthRepository,
+  name: r'phoneAuthRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : $AuthControllerHash,
+      : $phoneAuthRepositoryHash,
 );
-typedef AuthControllerRef = AutoDisposeAsyncNotifierProviderRef<void>;
-
-abstract class _$AuthController extends AutoDisposeAsyncNotifier<void> {
-  @override
-  FutureOr<void> build();
-}
+typedef PhoneAuthRepositoryRef = AutoDisposeProviderRef<PhoneAuthRepository>;
