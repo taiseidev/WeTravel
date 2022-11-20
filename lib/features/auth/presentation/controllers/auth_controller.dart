@@ -40,12 +40,12 @@ class AuthController extends _$AuthController {
 
   // 電話番号認証
   Future<void> verifyPhoneNumber({
-    required int number,
+    required String number,
   }) async {
     state = await AsyncValue.guard(
       () async {
         await ref.read(phoneAuthRepositoryProvider).signIn(
-              phone: number.toString(),
+              phone: number,
               callback: (String verificationId, int? resendToken) async {
                 ref
                     .read(verificationIdProvider.notifier)
@@ -60,5 +60,8 @@ class AuthController extends _$AuthController {
 // 認証ID一時保存用
 final verificationIdProvider = StateProvider<String>((_) => '');
 
-// 電話番号一時保存用
+// smsCode一時保存用
 final smsCodeProvider = StateProvider<String>((_) => '');
+
+// 電話番号一時保存用
+final phoneNumberProvider = StateProvider<String>((_) => '');

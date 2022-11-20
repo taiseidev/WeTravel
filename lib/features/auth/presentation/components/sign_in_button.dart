@@ -21,7 +21,7 @@ class SignInButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: callback,
         style: ElevatedButton.styleFrom(
-          primary: Colors.black54,
+          backgroundColor: Colors.black54,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),

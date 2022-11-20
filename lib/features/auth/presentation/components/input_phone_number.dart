@@ -2,20 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-// 電話番号を一時保管するProvider
-final phoneNumberProvider = StateProvider<int>((ref) => 0);
+import '../controllers/auth_controller.dart';
 
-class SignInWithPhoneDialog extends ConsumerWidget {
-  SignInWithPhoneDialog({
-    super.key,
-    required this.okButtonText,
-    required this.contents,
-    required this.callback,
-  });
+void inputPhoneNumberDialog(BuildContext context) {
+  showModalBottomSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    isDismissible: false,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(15),
+      ),
+    ),
+    builder: (context) => const InputPhoneNumber(),
+  );
+}
 
-  String okButtonText;
-  String contents;
-  VoidCallback callback;
+class InputPhoneNumber extends HookConsumerWidget {
+  const InputPhoneNumber({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,10 +42,17 @@ class SignInWithPhoneDialog extends ConsumerWidget {
                 ),
                 const Spacer(),
                 TextButton(
-                  onPressed: callback,
-                  child: Text(
-                    okButtonText,
-                    style: const TextStyle(
+                  onPressed: () async {
+                    Navigator.pop(context);
+                    await ref
+                        .read(authControllerProvider.notifier)
+                        .verifyPhoneNumber(
+                          number: ref.read(phoneNumberProvider),
+                        );
+                  },
+                  child: const Text(
+                    '送信',
+                    style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -50,9 +61,9 @@ class SignInWithPhoneDialog extends ConsumerWidget {
               ],
             ),
             const Gap(20),
-            Text(
-              contents,
-              style: const TextStyle(
+            const Text(
+              '電話番号を入力してください',
+              style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -74,7 +85,7 @@ class SignInWithPhoneDialog extends ConsumerWidget {
                 onChanged: (value) {
                   if (value.isNotEmpty) {
                     ref.read(phoneNumberProvider.notifier).update(
-                          (state) => state = int.parse(value),
+                          (state) => state = value,
                         );
                   }
                 },
