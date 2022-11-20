@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -31,11 +30,12 @@ class AuthController extends _$AuthController {
   Future<void> signInWithPhoneNumber({
     required String smsCode,
   }) async {
-    final credential = PhoneAuthProvider.credential(
-      verificationId: ref.read(verificationIdProvider),
-      smsCode: smsCode,
-    );
-    await FirebaseAuth.instance.signInWithCredential(credential);
+    state = await AsyncValue.guard(() async {
+      await ref.read(phoneAuthRepositoryProvider).signIn(
+            verificationId: ref.read(verificationIdProvider),
+            smsCode: smsCode,
+          );
+    });
   }
 
   // 電話番号認証
@@ -44,12 +44,15 @@ class AuthController extends _$AuthController {
   }) async {
     state = await AsyncValue.guard(
       () async {
-        await ref.read(phoneAuthRepositoryProvider).signIn(
+        await ref.read(phoneAuthRepositoryProvider).veryPhoneNumber(
               phone: number,
               callback: (String verificationId, int? resendToken) async {
                 ref
                     .read(verificationIdProvider.notifier)
                     .update((state) => state = verificationId);
+                ref
+                    .read(reSendSmsCodeProvider.notifier)
+                    .update((state) => state = resendToken!);
               },
             );
       },
@@ -65,3 +68,6 @@ final smsCodeProvider = StateProvider<String>((_) => '');
 
 // 電話番号一時保存用
 final phoneNumberProvider = StateProvider<String>((_) => '');
+
+// smsCode再送信用コードを一時保存用
+final reSendSmsCodeProvider = StateProvider<int>((_) => 0);
