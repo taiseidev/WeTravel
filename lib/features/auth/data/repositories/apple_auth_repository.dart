@@ -25,8 +25,10 @@ class AppleAuthRepository implements IAuthRepository {
         AppleIDAuthorizationScopes.fullName,
       ],
     );
-    final credential = AppleAuthProvider.credential(
-      signInAccount.authorizationCode,
+    final oauthProvider = OAuthProvider('apple.com');
+    final credential = oauthProvider.credential(
+      idToken: signInAccount.identityToken,
+      accessToken: signInAccount.authorizationCode,
     );
 
     ref.read(signInRepositoryProvider(credential: credential));
