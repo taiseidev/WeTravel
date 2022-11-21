@@ -45,6 +45,7 @@ class PhoneAuthRepository {
       verificationId: verificationId,
       smsCode: smsCode,
     );
+
     await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }
