@@ -4,7 +4,7 @@ part 'app_user_id.freezed.dart';
 
 @freezed
 class AppUserId with _$AppUserId {
-  @Assert('value.length < 30')
+  @Assert('value.length < 50')
   const factory AppUserId({
     required String value,
   }) = _AppUserId;

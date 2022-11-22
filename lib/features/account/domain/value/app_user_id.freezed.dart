@@ -90,7 +90,7 @@ class __$$_AppUserIdCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AppUserId implements _AppUserId {
-  const _$_AppUserId({required this.value}) : assert(value.length < 30);
+  const _$_AppUserId({required this.value}) : assert(value.length < 50);
 
   @override
   final String value;

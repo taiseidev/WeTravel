@@ -16,14 +16,7 @@ class EmailConverter implements JsonConverter<Email, String> {
 
   @override
   Email fromJson(String email) {
-    final emailValid = RegExp(
-      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-    ).hasMatch(email);
-    if (emailValid) {
-      return Email(value: email);
-    } else {
-      throw Exception('メールアドレスが正しくありません');
-    }
+    return Email(value: email);
   }
 
   @override
@@ -31,7 +24,7 @@ class EmailConverter implements JsonConverter<Email, String> {
     final emailValid = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
     ).hasMatch(mail.value);
-    if (emailValid) {
+    if (emailValid || mail.value == '') {
       return mail.value;
     } else {
       throw Exception('メールアドレスが正しくありません');

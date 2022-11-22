@@ -7,50 +7,34 @@ part of 'app_user.dart';
 // **************************************************************************
 
 _$_AppUser _$$_AppUserFromJson(Map<String, dynamic> json) => _$_AppUser(
-      id: const AppUserIdConverter().fromJson(json['id'] as String),
-      name: const AppUserNameConverter().fromJson(json['name'] as String),
+      id: appUserIdConverter.fromJson(json['id'] as String),
+      name: appUserNameConverter.fromJson(json['name'] as String),
       mail: _$JsonConverterFromJson<String, Email>(
-        json['mail'],
-        const EmailConverter().fromJson,
-      ),
+          json['mail'], emailConverter.fromJson),
       phoneNumber: _$JsonConverterFromJson<String, PhoneNumber>(
-        json['phoneNumber'],
-        const PhoneNumberConverter().fromJson,
-      ),
+          json['phoneNumber'], phoneNumberConverter.fromJson),
       imageUrl: json['imageUrl'] as String? ?? '',
       deviceToken: json['deviceToken'] as String? ?? '',
       createdAt: _$JsonConverterFromJson<Timestamp, DateTime>(
-        json['createdAt'],
-        const TimestampConverter().fromJson,
-      ),
+          json['createdAt'], timestampConverter.fromJson),
       updatedAt: _$JsonConverterFromJson<Timestamp, DateTime>(
-        json['updatedAt'],
-        const TimestampConverter().fromJson,
-      ),
+          json['updatedAt'], timestampConverter.fromJson),
     );
 
 Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) =>
     <String, dynamic>{
-      'id': const AppUserIdConverter().toJson(instance.id),
-      'name': const AppUserNameConverter().toJson(instance.name),
+      'id': appUserIdConverter.toJson(instance.id),
+      'name': appUserNameConverter.toJson(instance.name),
       'mail': _$JsonConverterToJson<String, Email>(
-        instance.mail,
-        const EmailConverter().toJson,
-      ),
+          instance.mail, emailConverter.toJson),
       'phoneNumber': _$JsonConverterToJson<String, PhoneNumber>(
-        instance.phoneNumber,
-        const PhoneNumberConverter().toJson,
-      ),
+          instance.phoneNumber, phoneNumberConverter.toJson),
       'imageUrl': instance.imageUrl,
       'deviceToken': instance.deviceToken,
       'createdAt': _$JsonConverterToJson<Timestamp, DateTime>(
-        instance.createdAt,
-        const TimestampConverter().toJson,
-      ),
+          instance.createdAt, timestampConverter.toJson),
       'updatedAt': _$JsonConverterToJson<Timestamp, DateTime>(
-        instance.updatedAt,
-        const TimestampConverter().toJson,
-      ),
+          instance.updatedAt, timestampConverter.toJson),
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(
