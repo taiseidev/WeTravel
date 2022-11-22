@@ -4,6 +4,7 @@ import 'package:we_travel/router/navigator_key.dart';
 import 'package:we_travel/router/scaffold_with_bottom_nav_bar.dart';
 import 'package:we_travel/router/tabs.dart';
 
+import '../features/account/presentation/pages/profile_page.dart';
 import '../features/auth/presentation/pages/sign_in_page.dart';
 import '../presentation/home/home.dart';
 
@@ -63,10 +64,7 @@ final routerProvider = Provider<GoRouter>(
             path: '/profile',
             pageBuilder: (context, state) => NoTransitionPage<void>(
               key: state.pageKey,
-              child: const HomePage(
-                label: 'profile',
-                detailsPath: '/profile/details',
-              ),
+              child: const ProfilePage(),
             ),
           ),
         ],

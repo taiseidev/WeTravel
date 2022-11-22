@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String $AuthControllerHash() => r'cfbf6e34278cea6705d7e4b3daecc4d833962e8a';
+String $AuthControllerHash() => r'd33a18f12c7a04d6da260bafd219f7eb8ddea0f8';
 
 /// See also [AuthController].
 final authControllerProvider =

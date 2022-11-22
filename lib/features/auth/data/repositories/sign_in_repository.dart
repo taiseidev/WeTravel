@@ -5,9 +5,19 @@ import 'package:we_travel/utils/auth.util.dart';
 part 'sign_in_repository.g.dart';
 
 @riverpod
-Future<void> signInRepository(
-  SignInRepositoryRef ref, {
-  required OAuthCredential credential,
-}) async {
-  await ref.watch(authProvider).signInWithCredential(credential);
+SignInRepository signInRepository(
+  SignInRepositoryRef ref,
+) =>
+    SignInRepository(ref);
+
+class SignInRepository {
+  SignInRepository(this.ref);
+  SignInRepositoryRef ref;
+
+  Future<String> signIn(OAuthCredential credential) async {
+    return ref
+        .watch(authProvider)
+        .signInWithCredential(credential)
+        .then((value) => value.user!.uid);
+  }
 }

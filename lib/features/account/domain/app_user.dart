@@ -9,6 +9,8 @@ import 'package:we_travel/utils/json_converters/timestamp.dart';
 part 'app_user.freezed.dart';
 part 'app_user.g.dart';
 
+typedef JsonMap = Map<String, dynamic>;
+
 @freezed
 class AppUser with _$AppUser {
   factory AppUser({
@@ -22,8 +24,14 @@ class AppUser with _$AppUser {
     @timestampConverter DateTime? updatedAt,
   }) = _AppUser;
 
-  factory AppUser.fromJson(Map<String, dynamic> json) =>
-      _$AppUserFromJson(json);
+  factory AppUser.fromJson(JsonMap json) => _$AppUserFromJson(json);
+
+  factory AppUser.fromDocumentSnapshot(DocumentSnapshot ds) {
+    final data = ds.data()! as JsonMap;
+    return AppUser.fromJson(<String, dynamic>{
+      ...data,
+    });
+  }
 
   factory AppUser.initial() => AppUser(
         id: const AppUserId(value: ''),

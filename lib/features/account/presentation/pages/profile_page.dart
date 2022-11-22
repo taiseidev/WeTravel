@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:status_view/status_view.dart';
-import 'package:we_travel/features/profile/presentation/pages/profile_app_bar_page.dart';
+import 'package:we_travel/features/account/presentation/pages/profile_app_bar_page.dart';
 
 class Trip {
   Trip({

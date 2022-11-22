@@ -4,6 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:we_travel/features/account/data/app_user_repository.dart';
+import 'package:we_travel/features/account/domain/app_user.dart';
+import 'package:we_travel/features/account/domain/value/app_user_id.dart';
+import 'package:we_travel/features/account/domain/value/app_user_name.dart';
+import 'package:we_travel/features/account/domain/value/email.dart';
 import 'package:we_travel/features/auth/data/repositories/sign_in_repository.dart';
 
 import '../../domain/interfaces/i_auth_repository.dart';
@@ -31,6 +36,14 @@ class AppleAuthRepository implements IAuthRepository {
       accessToken: signInAccount.authorizationCode,
     );
 
-    ref.read(signInRepositoryProvider(credential: credential));
+    final uid = await ref.read(signInRepositoryProvider).signIn(credential);
+
+    final appUser = AppUser.initial().copyWith(
+      id: AppUserId(value: uid),
+      name: AppUserName(value: signInAccount.givenName ?? ''),
+      mail: Email(value: signInAccount.email ?? ''),
+    );
+
+    await ref.read(appUserRepositoryProvider).setUser(appUser: appUser);
   }
 }

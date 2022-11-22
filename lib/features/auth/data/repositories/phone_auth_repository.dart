@@ -3,6 +3,11 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:we_travel/features/account/data/app_user_repository.dart';
+import 'package:we_travel/features/account/domain/app_user.dart';
+import 'package:we_travel/features/account/domain/value/app_user_id.dart';
+import 'package:we_travel/features/account/domain/value/phone_number.dart';
+import 'package:we_travel/features/auth/presentation/controllers/auth_controller.dart';
 
 part 'phone_auth_repository.g.dart';
 
@@ -46,6 +51,17 @@ class PhoneAuthRepository {
       smsCode: smsCode,
     );
 
-    await FirebaseAuth.instance.signInWithCredential(credential);
+    final uid = await FirebaseAuth.instance
+        .signInWithCredential(credential)
+        .then((value) => value.user!.uid);
+
+    final appUser = AppUser.initial().copyWith(
+      id: AppUserId(value: uid),
+      phoneNumber: PhoneNumber(
+        value: ref.read(phoneNumberProvider),
+      ),
+    );
+
+    await ref.read(appUserRepositoryProvider).setUser(appUser: appUser);
   }
 }

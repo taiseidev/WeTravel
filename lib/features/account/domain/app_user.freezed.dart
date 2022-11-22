@@ -20,19 +20,19 @@ AppUser _$AppUserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppUser {
-  @AppUserIdConverter()
+  @appUserIdConverter
   AppUserId get id => throw _privateConstructorUsedError;
-  @AppUserNameConverter()
+  @appUserNameConverter
   AppUserName get name => throw _privateConstructorUsedError;
-  @EmailConverter()
+  @emailConverter
   Email? get mail => throw _privateConstructorUsedError;
-  @PhoneNumberConverter()
+  @phoneNumberConverter
   PhoneNumber? get phoneNumber => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get deviceToken => throw _privateConstructorUsedError;
-  @TimestampConverter()
+  @timestampConverter
   DateTime? get createdAt => throw _privateConstructorUsedError;
-  @TimestampConverter()
+  @timestampConverter
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,14 +46,14 @@ abstract class $AppUserCopyWith<$Res> {
       _$AppUserCopyWithImpl<$Res, AppUser>;
   @useResult
   $Res call(
-      {@AppUserIdConverter() AppUserId id,
-      @AppUserNameConverter() AppUserName name,
-      @EmailConverter() Email? mail,
-      @PhoneNumberConverter() PhoneNumber? phoneNumber,
+      {@appUserIdConverter AppUserId id,
+      @appUserNameConverter AppUserName name,
+      @emailConverter Email? mail,
+      @phoneNumberConverter PhoneNumber? phoneNumber,
       String imageUrl,
       String deviceToken,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt});
+      @timestampConverter DateTime? createdAt,
+      @timestampConverter DateTime? updatedAt});
 
   $AppUserIdCopyWith<$Res> get id;
   $AppUserNameCopyWith<$Res> get name;
@@ -168,14 +168,14 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@AppUserIdConverter() AppUserId id,
-      @AppUserNameConverter() AppUserName name,
-      @EmailConverter() Email? mail,
-      @PhoneNumberConverter() PhoneNumber? phoneNumber,
+      {@appUserIdConverter AppUserId id,
+      @appUserNameConverter AppUserName name,
+      @emailConverter Email? mail,
+      @phoneNumberConverter PhoneNumber? phoneNumber,
       String imageUrl,
       String deviceToken,
-      @TimestampConverter() DateTime? createdAt,
-      @TimestampConverter() DateTime? updatedAt});
+      @timestampConverter DateTime? createdAt,
+      @timestampConverter DateTime? updatedAt});
 
   @override
   $AppUserIdCopyWith<$Res> get id;
@@ -247,29 +247,29 @@ class __$$_AppUserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_AppUser implements _AppUser {
   _$_AppUser(
-      {@AppUserIdConverter() required this.id,
-      @AppUserNameConverter() required this.name,
-      @EmailConverter() this.mail,
-      @PhoneNumberConverter() this.phoneNumber,
+      {@appUserIdConverter required this.id,
+      @appUserNameConverter required this.name,
+      @emailConverter this.mail,
+      @phoneNumberConverter this.phoneNumber,
       this.imageUrl = '',
       this.deviceToken = '',
-      @TimestampConverter() this.createdAt,
-      @TimestampConverter() this.updatedAt});
+      @timestampConverter this.createdAt,
+      @timestampConverter this.updatedAt});
 
   factory _$_AppUser.fromJson(Map<String, dynamic> json) =>
       _$$_AppUserFromJson(json);
 
   @override
-  @AppUserIdConverter()
+  @appUserIdConverter
   final AppUserId id;
   @override
-  @AppUserNameConverter()
+  @appUserNameConverter
   final AppUserName name;
   @override
-  @EmailConverter()
+  @emailConverter
   final Email? mail;
   @override
-  @PhoneNumberConverter()
+  @phoneNumberConverter
   final PhoneNumber? phoneNumber;
   @override
   @JsonKey()
@@ -278,10 +278,10 @@ class _$_AppUser implements _AppUser {
   @JsonKey()
   final String deviceToken;
   @override
-  @TimestampConverter()
+  @timestampConverter
   final DateTime? createdAt;
   @override
-  @TimestampConverter()
+  @timestampConverter
   final DateTime? updatedAt;
 
   @override
@@ -330,38 +330,38 @@ class _$_AppUser implements _AppUser {
 
 abstract class _AppUser implements AppUser {
   factory _AppUser(
-      {@AppUserIdConverter() required final AppUserId id,
-      @AppUserNameConverter() required final AppUserName name,
-      @EmailConverter() final Email? mail,
-      @PhoneNumberConverter() final PhoneNumber? phoneNumber,
+      {@appUserIdConverter required final AppUserId id,
+      @appUserNameConverter required final AppUserName name,
+      @emailConverter final Email? mail,
+      @phoneNumberConverter final PhoneNumber? phoneNumber,
       final String imageUrl,
       final String deviceToken,
-      @TimestampConverter() final DateTime? createdAt,
-      @TimestampConverter() final DateTime? updatedAt}) = _$_AppUser;
+      @timestampConverter final DateTime? createdAt,
+      @timestampConverter final DateTime? updatedAt}) = _$_AppUser;
 
   factory _AppUser.fromJson(Map<String, dynamic> json) = _$_AppUser.fromJson;
 
   @override
-  @AppUserIdConverter()
+  @appUserIdConverter
   AppUserId get id;
   @override
-  @AppUserNameConverter()
+  @appUserNameConverter
   AppUserName get name;
   @override
-  @EmailConverter()
+  @emailConverter
   Email? get mail;
   @override
-  @PhoneNumberConverter()
+  @phoneNumberConverter
   PhoneNumber? get phoneNumber;
   @override
   String get imageUrl;
   @override
   String get deviceToken;
   @override
-  @TimestampConverter()
+  @timestampConverter
   DateTime? get createdAt;
   @override
-  @TimestampConverter()
+  @timestampConverter
   DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)

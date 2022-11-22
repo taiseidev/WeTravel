@@ -29,72 +29,14 @@ class _SystemHash {
   }
 }
 
-String $signInRepositoryHash() => r'a0c4773098ce2d8a09d8ccf69333bf6100641424';
+String $signInRepositoryHash() => r'556e67bd8251731859cdda34f4612bc7a5eaeed2';
 
 /// See also [signInRepository].
-class SignInRepositoryProvider extends AutoDisposeFutureProvider<void> {
-  SignInRepositoryProvider({
-    required this.credential,
-  }) : super(
-          (ref) => signInRepository(
-            ref,
-            credential: credential,
-          ),
-          from: signInRepositoryProvider,
-          name: r'signInRepositoryProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : $signInRepositoryHash,
-        );
-
-  final OAuthCredential credential;
-
-  @override
-  bool operator ==(Object other) {
-    return other is SignInRepositoryProvider && other.credential == credential;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, credential.hashCode);
-
-    return _SystemHash.finish(hash);
-  }
-}
-
-typedef SignInRepositoryRef = AutoDisposeFutureProviderRef<void>;
-
-/// See also [signInRepository].
-final signInRepositoryProvider = SignInRepositoryFamily();
-
-class SignInRepositoryFamily extends Family<AsyncValue<void>> {
-  SignInRepositoryFamily();
-
-  SignInRepositoryProvider call({
-    required OAuthCredential credential,
-  }) {
-    return SignInRepositoryProvider(
-      credential: credential,
-    );
-  }
-
-  @override
-  AutoDisposeFutureProvider<void> getProviderOverride(
-    covariant SignInRepositoryProvider provider,
-  ) {
-    return call(
-      credential: provider.credential,
-    );
-  }
-
-  @override
-  List<ProviderOrFamily>? get allTransitiveDependencies => null;
-
-  @override
-  List<ProviderOrFamily>? get dependencies => null;
-
-  @override
-  String? get name => r'signInRepositoryProvider';
-}
+final signInRepositoryProvider = AutoDisposeProvider<SignInRepository>(
+  signInRepository,
+  name: r'signInRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : $signInRepositoryHash,
+);
+typedef SignInRepositoryRef = AutoDisposeProviderRef<SignInRepository>;
