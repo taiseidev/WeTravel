@@ -5,3 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 /// 一旦ここに置いてます
 
 final authProvider = Provider<FirebaseAuth>((_) => FirebaseAuth.instance);
+
+final userStreamProvider =
+    StreamProvider<User?>((ref) => ref.watch(authProvider).authStateChanges());

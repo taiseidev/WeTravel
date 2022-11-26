@@ -7,6 +7,13 @@ class App extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(
+      loginInfoProvider,
+      (_, __) {
+        // ignore: unused_result
+        ref.refresh(routerProvider);
+      },
+    );
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routeInformationParser: ref.watch(routerProvider).routeInformationParser,

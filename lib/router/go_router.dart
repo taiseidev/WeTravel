@@ -1,3 +1,4 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:we_travel/router/navigator_key.dart';
@@ -7,6 +8,8 @@ import 'package:we_travel/router/tabs.dart';
 import '../features/account/presentation/pages/profile_page.dart';
 import '../features/auth/presentation/pages/sign_in_page.dart';
 import '../presentation/home/home.dart';
+
+part 'go_router.freezed.dart';
 
 final routerProvider = Provider<GoRouter>(
   (ref) => GoRouter(
@@ -70,5 +73,44 @@ final routerProvider = Provider<GoRouter>(
         ],
       ),
     ],
+    // ログイン情報を保持するクラスの変更を監視
+    redirect: (context, state) {
+      final login = ref.watch(loginInfoProvider.notifier).isLogined();
+      if (login) {
+        return '/home';
+      }
+
+      // リダイレクトが不要な場合は元々のルートへ移動
+      return null;
+    },
   ),
 );
+
+// ログイン情報を保持するデータクラス
+@freezed
+class LoginAttribute with _$LoginAttribute {
+  const factory LoginAttribute({
+    required String userId,
+  }) = _LoginAttribute;
+}
+
+final loginInfoProvider =
+    StateNotifierProvider<LoginAttributeNotifier, LoginAttribute>((ref) {
+  return LoginAttributeNotifier();
+});
+
+class LoginAttributeNotifier extends StateNotifier<LoginAttribute> {
+  LoginAttributeNotifier() : super(const LoginAttribute(userId: ''));
+
+  void signIn(String userId) {
+    state = state.copyWith(userId: userId);
+  }
+
+  void signOut() {
+    state = state.copyWith(userId: '');
+  }
+
+  bool isLogined() {
+    return state.userId.isNotEmpty;
+  }
+}

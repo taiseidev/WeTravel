@@ -1,5 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:we_travel/router/go_router.dart';
 
 import '../../data/repositories/apple_auth_repository.dart';
 import '../../data/repositories/google_auth_repository.dart';
@@ -17,6 +18,8 @@ class AuthController extends _$AuthController {
     state = await AsyncValue.guard(() async {
       await ref.read(googleAuthRepositoryProvider).signIn();
     });
+    // ユーザーIDを保持することによってログイン状態を管理する
+    ref.read(loginInfoProvider.notifier).signIn('hogehoge');
   }
 
   // Appleアカウントで登録
