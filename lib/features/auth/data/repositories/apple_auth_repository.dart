@@ -11,18 +11,16 @@ import 'package:we_travel/features/account/domain/value/app_user_name.dart';
 import 'package:we_travel/features/account/domain/value/email.dart';
 import 'package:we_travel/features/auth/data/repositories/sign_in_repository.dart';
 
-import '../../domain/interfaces/i_auth_repository.dart';
-
 part 'apple_auth_repository.g.dart';
 
 @riverpod
 AppleAuthRepository appleAuthRepository(AppleAuthRepositoryRef ref) =>
     AppleAuthRepository(ref);
 
-class AppleAuthRepository implements IAuthRepository {
+class AppleAuthRepository {
   AppleAuthRepository(this.ref);
   final Ref ref;
-  @override
+
   Future<void> signIn() async {
     final signInAccount = await SignInWithApple.getAppleIDCredential(
       scopes: [

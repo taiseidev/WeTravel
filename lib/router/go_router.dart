@@ -117,6 +117,7 @@ class LoginAttributeNotifier extends StateNotifier<LoginAttribute> {
     state = state.copyWith(userId: user.uid.isNotEmpty ? user.uid : '');
   }
 
+  // ユーザーがログインした時
   void signIn(String userId) {
     state = state.copyWith(userId: userId);
   }

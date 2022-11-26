@@ -12,7 +12,6 @@ import 'package:we_travel/features/account/domain/value/email.dart';
 import 'package:we_travel/features/auth/data/repositories/sign_in_repository.dart';
 
 import '../../../../gen/firebase_options_dev.dart';
-import '../../domain/interfaces/i_auth_repository.dart';
 
 part 'google_auth_repository.g.dart';
 
@@ -20,11 +19,10 @@ part 'google_auth_repository.g.dart';
 GoogleAuthRepository googleAuthRepository(GoogleAuthRepositoryRef ref) =>
     GoogleAuthRepository(ref);
 
-class GoogleAuthRepository implements IAuthRepository {
+class GoogleAuthRepository {
   GoogleAuthRepository(this.ref);
   final Ref ref;
 
-  @override
   Future<void> signIn() async {
     final signinAccount = await GoogleSignIn(
       clientId: DefaultFirebaseOptions.currentPlatform.iosClientId,
