@@ -7,6 +7,7 @@ class App extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ログイン情報を処理するStateNotifierに変更が加わったらルートをリフレッシュ
     ref.listen(
       loginInfoProvider,
       (_, __) {

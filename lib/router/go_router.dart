@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:we_travel/router/navigator_key.dart';
 import 'package:we_travel/router/scaffold_with_bottom_nav_bar.dart';
 import 'package:we_travel/router/tabs.dart';
+import 'package:we_travel/utils/auth.util.dart';
 
 import '../features/account/presentation/pages/profile_page.dart';
 import '../features/auth/presentation/pages/sign_in_page.dart';
@@ -74,13 +75,15 @@ final routerProvider = Provider<GoRouter>(
       ),
     ],
     // ログイン情報を保持するクラスの変更を監視
-    redirect: (context, state) {
-      final login = ref.watch(loginInfoProvider.notifier).isLogined();
-      if (login) {
-        return '/home';
+    redirect: (context, state) async {
+      // ログイン済みであるかの情報を取得
+      final isLogined = ref.watch(loginInfoProvider.notifier).isLogined();
+      final logging = state.subloc == '/signIn';
+      if (logging) {
+        return isLogined ? '/home' : null;
       }
 
-      // リダイレクトが不要な場合は元々のルートへ移動
+      // リダイレクトが不要な場合は元々のルートへ遷移
       return null;
     },
   ),
@@ -96,11 +99,23 @@ class LoginAttribute with _$LoginAttribute {
 
 final loginInfoProvider =
     StateNotifierProvider<LoginAttributeNotifier, LoginAttribute>((ref) {
-  return LoginAttributeNotifier();
+  return LoginAttributeNotifier(ref);
 });
 
 class LoginAttributeNotifier extends StateNotifier<LoginAttribute> {
-  LoginAttributeNotifier() : super(const LoginAttribute(userId: ''));
+  LoginAttributeNotifier(this.ref) : super(const LoginAttribute(userId: '')) {
+    // アプリ起動時にuidをセット。存在しなかったら空文字を入れる
+    isLoginedWhenAppLaunched();
+  }
+  late StateNotifierProviderRef<LoginAttributeNotifier, LoginAttribute> ref;
+
+  Future<void> isLoginedWhenAppLaunched() async {
+    final user = await ref.watch(authStateProvider.future);
+    if (user == null) {
+      return;
+    }
+    state = state.copyWith(userId: user.uid.isNotEmpty ? user.uid : '');
+  }
 
   void signIn(String userId) {
     state = state.copyWith(userId: userId);
