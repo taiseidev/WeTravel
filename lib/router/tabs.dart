@@ -7,10 +7,18 @@ final tabsProvider = Provider<List<SalomonBottomBarItem>>(
   (ref) => [
     /// Home
     SalomonBottomBarItem(
-      icon: const Icon(Icons.home),
-      title: const Text('Home'),
+      icon: const Icon(Icons.wallet_travel_rounded),
+      title: const Text('Trip'),
       selectedColor: Colors.purple,
-      initialLocation: '/home',
+      initialLocation: '/trip',
+    ),
+
+    /// Notification
+    SalomonBottomBarItem(
+      icon: const Icon(Icons.trending_up),
+      title: const Text('Trend'),
+      selectedColor: Colors.orange,
+      initialLocation: '/trend',
     ),
 
     /// Article
@@ -19,14 +27,6 @@ final tabsProvider = Provider<List<SalomonBottomBarItem>>(
       title: const Text('Article'),
       selectedColor: Colors.pink,
       initialLocation: '/article',
-    ),
-
-    /// Notification
-    SalomonBottomBarItem(
-      icon: const Icon(Icons.notifications_none),
-      title: const Text('Notification'),
-      selectedColor: Colors.orange,
-      initialLocation: '/notification',
     ),
 
     /// Profile
